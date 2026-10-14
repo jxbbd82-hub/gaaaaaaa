@@ -1,0 +1,219 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('https://lusion.co/assets/fonts/Aeonik-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('https://lusion.co/assets/fonts/Aeonik-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('https://lusion.co/assets/fonts/Aeonik-RegularItalic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url('https://lusion.co/assets/fonts/IBMPlexMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url('https://lusion.co/assets/fonts/IBMPlexMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LusionMono';
+  src: url('https://lusion.co/assets/fonts/LusionMono.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-error: #e90000;
+  --color-off-white: #f0f1fa;
+  --color-white: #ffffff;
+  --color-dark-white: #e4e6ef;
+  --color-off-white-semi: rgba(240, 241, 250, 0.7);
+  --color-black: #000000;
+  --color-green: #c1ff00;
+  --color-blue: #1a2ffb;
+  --color-red: #ff4c41;
+  --color-grey-blue: #2b2e3a;
+  --color-dark-blue: #071bdf;
+  --color-purple: #8832f7;
+
+  --background: #f0f1fa;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #1a2ffb;
+  --primary-foreground: #ffffff;
+  --secondary: #e4e6ef;
+  --secondary-foreground: #2b2e3a;
+  --muted: #e4e6ef;
+  --muted-foreground: #2b2e3a;
+  --accent: #c1ff00;
+  --accent-foreground: #000000;
+  --destructive: #ff4c41;
+  --border: rgba(43, 46, 58, 0.12);
+  --input: rgba(43, 46, 58, 0.15);
+  --ring: #1a2ffb;
+  --radius: 1.25rem;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Aeonik', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f0f1fa;
+    color: #000000;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background-color: #f0f1fa;
+    color: #000000;
+    overflow-x: hidden;
+    selection-background-color: #1a2ffb;
+    selection-color: #ffffff;
+  }
+
+  ::selection {
+    background-color: #1a2ffb;
+    color: #ffffff;
+  }
+}
+
+.font-aeonik {
+  font-family: 'Aeonik', system-ui, -apple-system, sans-serif;
+}
+
+.font-mono-lusion {
+  font-family: 'IBMPlexMono', ui-monospace, SFMono-Regular, monospace;
+}
+
+.font-lusion-badge {
+  font-family: 'LusionMono', 'IBMPlexMono', monospace;
+}
+
+/* Custom Crosshair (+) Marker */
+.lusion-cross {
+  position: relative;
+  width: 11px;
+  height: 11px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.lusion-cross::before,
+.lusion-cross::after {
+  content: '';
+  position: absolute;
+  background-color: currentColor;
+  opacity: 0.45;
+}
+.lusion-cross::before {
+  top: 5px;
+  left: 0;
+  width: 11px;
+  height: 1.2px;
+}
+.lusion-cross::after {
+  left: 5px;
+  top: 0;
+  width: 1.2px;
+  height: 11px;
+}
+
+/* Continuous Marquee Animations */
+@keyframes lusion-marquee-left {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes lusion-marquee-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: lusion-marquee-left 26s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: lusion-marquee-right 26s linear infinite;
+}
+
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: lusion-marquee-left 14s linear infinite;
+}
+
+/* 3D Card Flip Perspective */
+.perspective-1000 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Hide scrollbars on custom horizontal containers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
